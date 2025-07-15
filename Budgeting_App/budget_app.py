@@ -3,8 +3,7 @@
 from datetime import datetime
 
 
-class User:
-    """
+
     A User class to keep track of name and email.
     """
     name: str
