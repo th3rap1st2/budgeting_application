@@ -7,8 +7,14 @@ body {
 body {
   font-family: "Poppins", sans-serif;
   color: darkblue;
+  text-align: center;
 }
 
-.welcome_page {
-
+button {
+  background-color: darkblue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
