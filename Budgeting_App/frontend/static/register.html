@@ -4,34 +4,75 @@
   <title>Register User</title>
   <link rel="stylesheet" href="register.css">
 </head>
+
+
 <body>
-  <div class="form-container">
-    <h1 class="form-header">Register User</h1>
-
-    <div class="material input">
-      <input type="text" id="email" name="email" required>
-      <label for="email">Email</label>
-      <div class="bar">
-        <div class="left"></div>
-        <div class="right"></div>
-      </div>
-      <div class="highlight-bar"></div>
+    <div class="spline-embed">
+      <iframe src='https://my.spline.design/customlinepathwithcustommatcap-OHxjl8cVSfjvpLMHEYuF5ZXN/' frameborder='0' width='100%' height='100%'></iframe>
     </div>
+  
+  <div class="form-container">
+    <div class="form-box">
+      <div class="form-content">
+        <div class="form-fields">
+          <h1 class="form-header">Register User</h1>
 
-    <div class="material input">
-      <input type="text" id="name" name="name" required>
-      <label for="name">Name</label>
-      <div class="bar">
-        <div class="left"></div>
-        <div class="right"></div>
+          <div class="material input">
+            <input type="text" id="email" name="email" required>
+            <label for="name">Name</label>
+            <div class="bar">
+              <div class="left"></div>
+              <div class="right"></div>
+            </div>
+            <div class="highlight-bar"></div>
+          </div>
+
+          <div class="material input">
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email</label>
+            <div class="bar">
+              <div class="left"></div>
+              <div class="right"></div>
+            </div>
+            <div class="highlight-bar"></div>
+          </div>
+          <button type="submit" class="submit-button">Register</button>
+        </div>
+
       </div>
-      <div class="highlight-bar"></div>
     </div>
   </div>
-</body>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.material.input input').forEach(input => {
+        const parent = input.closest('.material.input');
 
+        const updateLabel = () => {
+          if (input.value.trim() !== '') {
+            parent.classList.add('up');
+          } else {
+            parent.classList.remove('up');
+          }
+        };
 
+        input.addEventListener('focus', () => {
+          parent.classList.add('focused');
+        });
+
+        input.addEventListener('blur', () => {
+          parent.classList.remove('focused');
+          updateLabel();
+        });
+
+        // Also update on input (in case autofill or typing)
+        input.addEventListener('input', updateLabel);
+
+        // On load (in case pre-filled or cached)
+        updateLabel();
+      });
+    });
+  </script>
 
 
 </body>

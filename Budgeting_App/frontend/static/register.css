@@ -3,18 +3,27 @@
   --material-selected: #cb844e;
 }
 
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: black;
+  overflow: hidden;
+  position: relative;
+}
+
 .material.input {
   position: relative;
   margin: 40px auto 20px auto; /* top & bottom spacing, centered horizontally */
   width: 500px;
+  background: transparent;
 }
 
 .form-header {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 25px;
+  color: #844236;
   text-align: center;
-  color: #844236; /* or whatever color fits your theme */
-  font-size: 45px;
-  margin-top: 40px;
-  margin-bottom: 20px;
 }
 
 
@@ -108,6 +117,116 @@
   animation: material-input-text-highlight-bar 0.3s ease;
 }
 
+
+
+
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 40px;
+  padding: 20px;
+  background-color: #fdf9f8;
+}
+
+
+
+
+.form-content {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+  height: 100%;            /* full height of the box */
+}
+
+
+
+/* Image fills left half */
+.side-image {
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+}
+
+.form-fields {
+  width: 55%;
+  padding: 40px;
+}
+
+
+.material.input {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  height: 100vh;
+  padding: 20px;
+  position: relative;
+}
+
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  z-index: 1; /* Ensure it's above the animation */
+  position: relative;
+}
+
+.form-box {
+  background-color: rgba(255, 255, 255, 0.1); /* semi-transparent to see the animation */
+  backdrop-filter: blur(10px); /* adds a nice blur effect over animation */
+  border-radius: 20px;
+  padding: 40px;
+  width: 600px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+.spline-embed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Send it to the back */
+  pointer-events: none; /* Let clicks pass through */
+}
+
+.spline-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 18px;
+  color: white;
+  background-color: #844236;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.submit-button:hover {
+  background-color: #cb844e;
+}
+
+
+
+
+
 /* ANIMATION */
 @keyframes material-input-text-highlight-bar {
   from {
@@ -118,4 +237,15 @@
     left: 0;
     background: transparent;
   }
+}
+
+/* === Autofill background fix === */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: transparent !important;
 }
