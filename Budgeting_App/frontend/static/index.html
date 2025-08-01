@@ -5,10 +5,12 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class ="welcome_page">
-    <h1>Welcome to -</h1>
-    <button id="register">Register User</button>
-    <button id="existing">Existing User</button>
+  <div class="welcome-container">
+    <h1>Welcome to Budgeting Application</h1>
+    <div class="btn-container">
+      <button id="register">Register User</button>
+      <button id="existing">Existing User</button>
+    </div>
   </div>
 
     <script>
@@ -17,7 +19,7 @@
     });
 
     document.getElementById('existing').addEventListener('click', () => {
-    window.location.href = 'register.html'; // Redirect to user details page
+    window.location.href = 'existing.html'; // Redirect to user details page
     });
   </script>
 
