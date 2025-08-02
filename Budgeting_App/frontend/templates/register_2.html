@@ -5,4 +5,26 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='register_2.css') }}">
 </head>
 
-<h1>Hello</h1>
+<h1>Welcome, {{ name }}!</h1>
+
+<body>
+
+  <div class="form-container">
+    <form action="/register_2", method="POST">
+
+      <label for="balance">What is your current balance:</label><br>
+      <input type="text" name="balance" id="balance" required><br>
+      <label for="budget">What is your monthly budget:</label><br>
+      <input type="text" name="budget" id="budget" required><br>
+
+      <div class="submit-button">
+        <input type="submit" value="Done">
+      </div>
+
+
+    </form>
+
+
+  </div>
+</body>
+

@@ -17,9 +17,11 @@ def register():
 def existing():
     return render_template('existing.html')
 
-@app.route('/register_2')
+@app.route('/register_2', methods=['POST'])
 def register_2():
-    return render_template('register_2.html')
+    name = request.form.get('name').title()
+    email = request.form.get('email')
+    return render_template('register_2.html', name=name)
 
 
 
