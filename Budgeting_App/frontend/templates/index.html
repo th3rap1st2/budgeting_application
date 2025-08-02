@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>My Budgeting App</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <div class="welcome-container">
@@ -15,11 +15,11 @@
 
     <script>
     document.getElementById('register').addEventListener('click', () => {
-      window.location.href = 'register.html'; // Redirect to user details page
+      window.location.href = '/register'; // Redirect to user details page
     });
 
     document.getElementById('existing').addEventListener('click', () => {
-    window.location.href = 'existing.html'; // Redirect to user details page
+    window.location.href = '/existing'; // Redirect to user details page
     });
   </script>
 
