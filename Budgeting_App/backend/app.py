@@ -17,6 +17,11 @@ def register():
 def existing():
     return render_template('existing.html')
 
+@app.route('/register_2')
+def register_2():
+    return render_template('register_2.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
