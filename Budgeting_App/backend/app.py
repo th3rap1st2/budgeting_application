@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
+import json, os
 
 app = Flask(__name__,
              template_folder='../frontend/templates', 
              static_folder='../frontend/static')
 
+transactions = 0
 
 @app.route('/')
 def index():
@@ -21,6 +23,11 @@ def existing():
 def register_2():
     name = request.form.get('name').title()
     email = request.form.get('email')
+
+    user_info = {
+        "name": name, 
+        "email": email
+    }
     return render_template('register_2.html', name=name)
 
 
