@@ -21,13 +21,7 @@ def existing():
 
 @app.route('/register_2', methods=['POST'])
 def register_2():
-    name = request.form.get('name').title()
-    email = request.form.get('email')
-
-    user_info = {
-        "name": name, 
-        "email": email
-    }
+    name = request.form.get('name').title()    
     return render_template('register_2.html', name=name)
 
 
