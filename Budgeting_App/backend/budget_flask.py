@@ -1,11 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify, session
 import json, os
 
 app = Flask(__name__,
              template_folder='../frontend/templates', 
              static_folder='../frontend/static')
 
-transactions = 0
 
 @app.route('/')
 def index():
