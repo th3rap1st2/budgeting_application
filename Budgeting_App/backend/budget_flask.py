@@ -22,6 +22,7 @@ def register():
 def register_2():
 
     if 'balance' in request.form and 'budget' in request.form:
+
         balance = float(request.form.get('balance'))
         budget_amount = float(request.form.get('budget'))  # get the stuff from the form
 
@@ -47,7 +48,7 @@ def register_2():
 
         return redirect(url_for('existing'))  # redirect user into the existing url
      
-    name = session.get('name')
+    name = session.get('name', 'Guest')
     return render_template('register_2.html', name=name)
 
 
