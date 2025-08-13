@@ -41,7 +41,7 @@ class BudgetApp:
         self.transactions = []
         self.total_transactions = 0
 
-        while self.current_balance < self.monthly_budget:
+        if self.current_balance < self.monthly_budget:
             self.monthly_budget = self.current_balance  
 
 
@@ -54,7 +54,7 @@ class BudgetApp:
             raise ValueError("Insufficient funds!")
 
         self.current_balance -= amount
-        self.monthly_budget -= max(0.0, self.monthly_budget - amount)
+        self.monthly_budget = max(0.0, self.monthly_budget - amount)
         self.total_transactions += 1
 
         date_str = datetime.today().strftime('%Y-%m-%d')
@@ -69,8 +69,8 @@ class BudgetApp:
 
         return {
             "date": date_str,
-            "message": f"Youur recorded transaction: ${transaction_amount:.2f} on {type_trans.lower()}",
+            "message": f"Your recorded transaction: ${transaction_amount:.2f} on {type_trans.lower()}",
             "remaining_budget": round(self.monthly_budget, 2),
             "current_balance": round(self.current_balance, 2),
-            "total_transaction": self.total_transactions
+            "total_transactions": self.total_transactions
         }

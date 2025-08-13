@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify, session
 import json, os
+import budget
 
 app = Flask(__name__,
              template_folder='../frontend/templates', 
