@@ -16,6 +16,10 @@
       <input type="text" name="balance" id="balance" required><br>
       <label for="budget">What is your monthly budget:</label><br>
       <input type="text" name="budget" id="budget" required><br>
+      {% if budget_error %}
+        <div class="input-error">{{ budget_error }}</div>
+      {% endif %}
+
 
       <div class="submit-button">
         <input type="submit" value="Done">
