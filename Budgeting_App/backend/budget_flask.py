@@ -13,8 +13,14 @@ app.secret_key = os.environ.get('SECRET_KEY', 'fallback-dev-key')
 def index():
     return render_template('index.html')
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
+    if request.method == 'POST':
+        session['name'] = (request.form.get('name').strip()).title()
+        session['email'] = request.form.get('email').strip()
+        # session stores the name and email across everything 
+        
+        return redirect(url_for('register_2'))
 
     return render_template('register.html')
 
@@ -22,16 +28,21 @@ def register():
 def register_2():
 
     if 'balance' in request.form and 'budget' in request.form:
-
-        balance = float(request.form.get('balance'))
-        budget_amount = float(request.form.get('budget'))  # get the stuff from the form
-
         name = session.get('name')  # get the data from the session 
         email = session.get('email')
 
-        if budget_amount > balance:
-            return render_template('register_2.html', name=name, budget_error="Budget cannot exceed current balance")
+        try:
+            balance = float(request.form.get('balance').strip())
+            budget_amount = float(request.form.get('budget').strip())  # get the information from the form
 
+            if balance < 0 or budget_amount < 0:
+                raise ValueError('Number cannot be negative!')
+
+        except ValueError:  
+            return render_template('register_2.html', name=name, budget_error="Please enter a valid number.")
+
+        if budget_amount > balance:  # check if the monthly budget doesn't exceed the current balance 
+            return render_template('register_2.html', name=name, budget_error="Budget cannot exceed current balance.")
       
         user = budget.User(name, email)
         budget_app = budget.BudgetApp(user, balance, budget_amount) # create objects 
