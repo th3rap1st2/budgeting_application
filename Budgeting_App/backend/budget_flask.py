@@ -57,7 +57,7 @@ def register_2():
         with open('user_data.json', 'w') as file:
             json.dump(user_data, file) # add the information into it 
 
-        return redirect(url_for('existing'))  # redirect user into the existing url
+        return redirect(url_for('add_transactions'))  # redirect user into the existing url
      
     name = session.get('name', 'Guest')
     return render_template('register_2.html', name=name)
@@ -66,6 +66,10 @@ def register_2():
 @app.route('/existing')
 def existing():
     return render_template('existing.html')
+
+@app.route('/add-transactions')
+def add_transactions():
+    return render_template('add_transactions.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

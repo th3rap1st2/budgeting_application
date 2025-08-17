@@ -5,5 +5,11 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='existing.css') }}">
 </head>
 <body>
-    <div class="balance">Current Balance:</div>
+    <div class="top-container">
+      <div class="text">Your Monthly Spending: </div>
+      <div id="myProgress">
+        <div id="myBar"></div>
+      </div>
+    </div>
+    <div class="pie-chart"></div>
 </body>
